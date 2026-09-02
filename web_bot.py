@@ -1,8 +1,60 @@
+import http.server
+import os
+import threading
 import time
 import requests
 
-TOKEN = "8640534048:AAF8HEHjq5hWPPu2_za_nLs2wymJsYapXk8"
+
+class DummyHandler(http.server.BaseHTTPRequestHandler):
+
+  def do_GET(self):
+    self.send_response(200)
+    self.end_headers()
+    self.wfile.write(b"Bot is running!")
+
+
+def run_web():
+  port = int(os.environ.get("PORT", 10000))
+  server = http.server.HTTPServer(("0.0.0.0", port), DummyHandler)
+  server.serve_forever()
+
+
+web_thread = threading.Thread(target=run_web)
+web_thread.daemon = True
+web_thread.start()
+
+TOKEN = os.environ.get("BOT_TOKEN")
 URL = f"https://api.telegram.org/bot{TOKEN}/"
+
+
+
+def get_updates(offset=None):
+  try:
+    res = requests.get(URL + "getUpdates", params={"timeout": 100, "offset": offset})
+    return res.json()
+  except Exception as e:
+    print("Error connection:", e)
+    return None
+
+
+def send_message(chat_id, text):
+  requests.post(URL + "sendMessage", data={"chat_id": chat_id, "text": text})
+
+
+def main():
+  print("Bot Telegram Remote Zaki Berjalan...")
+  last_update_id = None
+  while True:
+    updates = get_updates(last_update_id)
+    if updates and "result" in updates:
+      for update in updates["result"]:
+        last_update_id = update["update_id"] + 1
+        message = update.get("message")
+        if not message:
+          continue
+import time
+import requests
+
 
 def get_updates(offset=None):
     try:

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaki - Digital Workspace & Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .header-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            background-color: var(--bg-color);
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Selamat Datang di Web Server Zaki</h1>
+            <p>Sistem Server Linux Debian 12 (Bookworm) & Apache2</p>
+            <span class="status-badge">● Status: Server Active & Online</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            
+            <!-- Profil Server -->
+            <div class="card">
+                <h3>🖥️ Informasi Server</h3>
+                <p><strong>OS:</strong> Debian 12 Bookworm</p>
+                <p><strong>Web Server:</strong> Apache/2.4</p>
+                <p><strong>Tunnel Service:</strong> Ngrok Public Tunnel</p>
+                <p><strong>Environment:</strong> VirtualBox Workstation</p>
+            </div>
+
+            <!-- Fitur Utama -->
+            <div class="card">
+                <h3>🚀 Layanan Aktif</h3>
+                <ul class="skills-list">
+                    <li><span>Web Hosting</span> <span>ONLINE</span></li>
+                    <li><span>SSH Remote</span> <span>Port 2223</span></li>
+                    <li><span>HTTP Traffic</span> <span>Port 80</span></li>
+                    <li><span>PHP Engine</span> <span>Active</span></li>
+                </ul>
+            </div>
+
+            <!-- Kontrol Quick Test -->
+            <div class="card">
+                <h3>⚡ Uji Server</h3>
+                <p>Klik tombol di bawah untuk memeriksa performa atau info sistem server kamu saat ini.</p>
+                <br>
+                <button class="btn" onclick="alert('Server Debian 12 berjalan normal!')">Cek Respon Server</button>
+            </div>
+
+            <!-- Section Project Detail -->
+            <div class="card full-width">
+                <h3>📌 Catatan Pengoperasian & Maintenance</h3>
+                <p>Halaman ini dikelola langsung menggunakan editor teks Linux (Nano) melalui jaringan SSH. File website ini berlokasi di direktori utama web server Debian:</p>
+                <br>
+                <code style="background-color: var(--bg-color); padding: 0.5rem 1rem; border-radius: 6px; display: block; color: var(--accent-color);">
+                    /var/www/html/index.html
+                </code>
+                <br>
+                <p>Setiap perubahan kode yang disimpan pada direktori di atas akan langsung diperbarui secara *real-time* di seluruh dunia melalui tautan Ngrok yang sedang aktif.</p>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Zaki Server Environment. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
